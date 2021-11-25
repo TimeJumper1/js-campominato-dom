@@ -41,6 +41,7 @@ function startGame(){
         const clickedNumber = parseInt(this.querySelector('span').textContent);
         if (bombsArray.includes(clickedNumber)){
             this.classList.add('bomb')
+            
             endGame('lose')
         }else{
             this.classList.add('active');
@@ -68,22 +69,35 @@ function startGame(){
             const endGameText = document.getElementById('final-message')
             endGameText.innerHTML = loseMessage
             endGameText.classList.remove('hidden')
+            
         }
         // rende non cliccabili tutti gli elementi square qualsiasi sia la difficolta scelta
         const allsquareEasy = document.getElementsByClassName('ms_square_100')
         for(let i = 0; i< allsquareEasy.length; i++) {
             const thisCell = allsquareEasy[i]
             thisCell.style.pointerEvents = "none"
+            const cellNumber = parseInt(thisCell.querySelector('span').textContent);
+            if(bombsArray.includes(cellNumber)){
+                thisCell.classList.add('bomb')
+            }
         }
         const allsquareMedium = document.getElementsByClassName('ms_square_81')
         for(let i = 0; i< allsquareMedium.length; i++) {
             const thisCell = allsquareMedium[i]
             thisCell.style.pointerEvents = "none"
+            const cellNumber = parseInt(thisCell.querySelector('span').textContent);
+            if(bombsArray.includes(cellNumber)){
+                thisCell.classList.add('bomb')
+            }
         }
         const allsquareHard = document.getElementsByClassName('ms_square_49')
         for(let i = 0; i< allsquareHard.length; i++) {
             const thisCell = allsquareHard[i]
             thisCell.style.pointerEvents = "none"
+            const cellNumber = parseInt(thisCell.querySelector('span').textContent);
+            if(bombsArray.includes(cellNumber)){
+                thisCell.classList.add('bomb')
+            }
         }
     }
 }
